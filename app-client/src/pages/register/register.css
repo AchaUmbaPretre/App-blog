@@ -1,0 +1,67 @@
+.register{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: brown;
+}
+.register-h1{
+    font-weight: 300;
+    font-size: 25px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.container-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    gap: 25px;
+    background: #FFF;
+}
+.register-input{
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid  lightgrey;
+}
+.register-btn{
+    padding: 8px;
+    border: none;
+    background: rgba(190, 41, 41, 0.89);
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+}
+.register-btn:hover{
+    background: rgba(155, 50, 50, 0.87);
+}
+
+.register-row-txt{
+    text-align: center;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.register-text-error{
+    color: brown;
+    font-size: 12px;
+}
+.register-text{
+    font-size: 12px;
+}
+.register-link{
+    cursor: pointer;
+    text-decoration:underline;
+    color: blue;
+}
+.register-link:hover{
+    color:brown;
+}

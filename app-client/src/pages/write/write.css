@@ -1,0 +1,83 @@
+.write{
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+.write-left{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.write-input{
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.137);
+}
+.write-input-quill{
+    height: 300px;
+    border-radius: 5px;
+}
+.write-quill{
+    height: 100%;
+    border: none;
+}
+.write-right{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.write-item{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    font-size: 13px;
+    color: #555;
+    border-radius: 5px;
+    gap: 8px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.137);
+}
+.write-h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.write-item-span{
+    font-size: 15px;
+}
+.write-item-file{
+    display: none;
+}
+.write-label{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.write-label:hover{
+    color:red;
+}
+.write-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.write-btn{
+    border: none;
+    padding: 7px 10px;
+    color: #fff;
+    background: brown;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.write-btn:hover{
+    background: transparent;
+    border: 1px solid brown;
+    color: brown;
+}
+.write-input-row{
+    display: flex;
+    align-items:flex-end;
+    gap: 5px;
+}

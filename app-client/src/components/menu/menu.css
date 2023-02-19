@@ -1,0 +1,41 @@
+
+.single-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+}
+.single-row-right2{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.single-right-img{
+    height:200px;
+    width: 100%;
+}
+.single-right-h2{
+    font-size: 20px;
+    font-weight: 500;
+}
+.single-desc{
+    text-align: justify;
+}
+.single-right-btn{
+    width: max-content;
+    padding: 10px 8px;
+    background: transparent;
+    border: 1px solid brown;
+    color:brown;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.single-right-btn:hover{
+    background:brown;
+    color: #FFF;
+    border: none;
+}

@@ -1,0 +1,8 @@
+.App{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.app-container{
+    width: 1025px;
+}

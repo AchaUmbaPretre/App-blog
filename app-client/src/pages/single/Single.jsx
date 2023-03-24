@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import  {Link, useLocation, useNavigate} from 'react-router-dom'
+import moment from 'moment'
 import './single.css'
 import image3 from '../../assets/image3.jpg'
 import axios from 'axios'
@@ -44,12 +45,12 @@ const Single = () => {
     <>
       <div className="single">
         <div className="single-left">
-          <img src={post.img} alt="" className="single-img" />
+          <img src={image3} alt="" className="single-img" />
           <div className="single-row">
            {post?.userImg && <img src={image3} alt="" className="single-row-img" />}
             <div className="single-row-center">
               <h2 className="single-center-h2">{post.username}</h2>
-              <span className="single-span-desc">Posted{post.date}</span>
+              <span className="single-span-desc">Posted {moment(post.date).fromNow()}</span>
             </div>
           {currentUser.username === post.username && ( 
             <div className="single-row-right">

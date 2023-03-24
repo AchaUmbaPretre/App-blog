@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     background: brown;
+    width: 100%;
 }
 .login-h1{
     font-weight: 300;

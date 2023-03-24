@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './home.css'
 import {Link,useLocation} from 'react-router-dom'
-import image2 from '../../assets/image2.jpg'
+import image3 from '../../assets/image3.jpg'
 import axios from 'axios'
 
 const Home = () =>{
@@ -13,7 +13,7 @@ const Home = () =>{
 
     const fetchData = async()=>{
       try{
-        const res = await axios.get("http://localhost:8080/api/posts"+categorie);
+        const res = await axios.get("http://localhost:8080/api/posts" + categorie);
         setPosts(res.data)
 
       }catch(error){
@@ -31,7 +31,7 @@ const Home = () =>{
 
     return <div className="home-row" >
               <div className="home-image">
-                <img src={image2} alt="" className="home-img" />
+                <img src={image3} alt="" className="home-img" />
               </div>
               <div className="home-row-text">
                 <Link to={`/post/${post.id}`}>

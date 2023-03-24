@@ -5,6 +5,8 @@
     height: 50px;
     justify-content: space-between;
     width: 100%;
+    width: 1025px;
+    margin: 0 auto;
     border-bottom: 1px solid rgba(128, 128, 128, 0.815);
 }
 .logo{

@@ -3,7 +3,7 @@ import './Font-Awesome-6.x/css/all.min.css'
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import {createBrowserRouter,RouterProvider,Route, Outlet} from 'react-router-dom'
+import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom'
 import Topbar from './components/topbar/Topbar';
 import Footer from './components/footer/Footer';
 import Single from './pages/single/Single';
@@ -12,8 +12,11 @@ import Write from './pages/write/Write';
 const Layout =()=>{
   return (
     <>
+    
       <Topbar/>
-      <Outlet/>
+      <div className="layout">
+        <Outlet/>
+      </div>
       <Footer/>
     </>
   );

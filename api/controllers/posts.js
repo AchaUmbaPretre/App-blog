@@ -6,13 +6,13 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 export const getPosts = (req, res)=>{
-    const q = req.query.categorie?
+    const q = req.query.categorie ?
      "SELECT * FROM posts WHERE categorie=?"
      :"SELECT * FROM posts"
     db.query(q, [req.query.categorie],  (error, data)=>{
         if(error) res.status(500).send(error)
 
-        return res.status(200).json(data)
+        return res.status(200).json(data);
     })
 }
 

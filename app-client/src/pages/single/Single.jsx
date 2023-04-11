@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import  {Link, useLocation, useNavigate} from 'react-router-dom'
 import moment from 'moment'
 import './single.css'
-import image3 from '../../assets/image3.jpg'
 import axios from 'axios'
 import { AuthContext } from '../../context/authContext'
 import Menu from '../../components/menu/Menu'
+import image3 from '../../assets/image3.jpg'
 
 const Single = () => {
 
@@ -45,7 +45,7 @@ const Single = () => {
     <>
       <div className="single">
         <div className="single-left">
-          <img src={image3} alt="" className="single-img" />
+          <img src={`../upload/${post?.img}`} alt="" className="single-img" />
           <div className="single-row">
            {post?.userImg && <img src={image3} alt="" className="single-row-img" />}
             <div className="single-row-center">
@@ -54,7 +54,7 @@ const Single = () => {
             </div>
           {currentUser.username === post.username && ( 
             <div className="single-row-right">
-              <Link to={`/write?edit=2`}>
+              <Link to={`/write?edit=2`} state={post}>
               <div className="single-icon icon-green">
                 <i className="fa-regular fa-edit icon-single"></i>
               </div>

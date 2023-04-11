@@ -4,14 +4,15 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
+import moment from 'moment'
 
 const Write = () => {
 
   const state = useLocation().state
-  const [value, setValue] = useState(state?.title || '')
-  const [title, setTitle] = useState(state?.desc || '')
+  const [title, setTitle] = useState(state?.title || '')
+  const [value, setValue] = useState(state?.desc || '')
   const [file, setFile] = useState(null)
-  const [cat, setCat] = useState(state?.cat || '')
+  const [categorie, setCategorie] = useState(state?.categorie || '')
 
   const upload = async ()=>{
     try{
@@ -27,10 +28,14 @@ const Write = () => {
 
   const handleClick = async (e) =>{
         e.preventDefault()
-        const imgUrl = upload()
+        const imgUrl = await upload()
 
         try{
-
+          state ? await axios.put(`http://localhost:8080/api/posts/${state.id}`,{
+            title, desc: value, categorie, img:file ? imgUrl : ""
+          }) : await axios.post(`http://localhost:8080/api/posts/`, {
+            title, desc:value, categorie, img:file ? imgUrl : "", date: moment(Date.now()).format('YYY-MM-DD')
+          })
         }
         catch(error){
           console.log(error)
@@ -63,27 +68,27 @@ const Write = () => {
           <div className="write-item">
             <h1 className="write-h1">Category</h1>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'art' } id='art' value='art' onChange={e => setCat(e.target.value)}/>
+              <input type="radio" name='cat' checked={ categorie === 'art' } id='art' value='art' onChange={e => setCategorie(e.target.value)}/>
               <labeL htmlFor='art'>Art</labeL>
             </div>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'science' } id='science' value='science' onChange={e => setCat(e.target.value)} />
+              <input type="radio" name='cat' checked={ categorie === 'science' } id='science' value='science' onChange={e => setCategorie(e.target.value)} />
               <labeL htmlFor='science'>Science</labeL>
             </div>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'technology' } id='technology' value='technology' onChange={e => setCat(e.target.value)} />
+              <input type="radio" name='cat' checked={ categorie === 'technology' } id='technology' value='technology' onChange={e => setCategorie(e.target.value)} />
               <labeL htmlFor='technology'>Technology</labeL>
             </div>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'cinema' } id='cinema' value='cinema' onChange={e => setCat(e.target.value)} />
+              <input type="radio" name='cat' checked={ categorie === 'cinema' } id='cinema' value='cinema' onChange={e => setCategorie(e.target.value)} />
               <labeL htmlFor='cinema'>Cinema</labeL>
             </div>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'design' } id='design' value='design' onChange={e => setCat(e.target.value)} />
+              <input type="radio" name='cat' checked={ categorie === 'design' } id='design' value='design' onChange={e => setCategorie(e.target.value)} />
               <labeL htmlFor='design'>Design</labeL>
             </div>
             <div className="write-input-row">
-              <input type="radio" name='cat' checked={ categorie == 'food' } id='food' value='food' onChange={e => setCat(e.target.value)} />
+              <input type="radio" name='cat' checked={ categorie === 'food' } id='food' value='food' onChange={e => setCategorie(e.target.value)} />
               <labeL htmlFor='food'>Food</labeL>
             </div>
           </div>

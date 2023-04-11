@@ -12,6 +12,7 @@ const Menu = ({categorie}) =>{
         try{
           const res = await axios.get("http://localhost:8080/api/posts/?categorie="+categorie);
           setPosts(res);
+          console.log(posts)
   
         }catch(error){
           console.log(error)
@@ -20,14 +21,22 @@ const Menu = ({categorie}) =>{
       fetchData();
     },[categorie])
 
+    const getText = (html)=> {
+      const doc = new DOMParser().parseFromString(html, 'text/html')
+      return doc.body.textContent
+    }
+
   return (
     <>
         <div className="single-right">
-          <div className="single-row-right2">
-            <img src={posts.img} alt="" className="single-right-img" />
-            <h2 className="single-right-h2">{posts.title}</h2>
+          { posts.map((post)=>{
+ return <div className="single-row-right2">
+            <img src={`../upload/${post?.img}`} alt="" className="single-right-img" />
+            <h2 className="single-right-h2">{getText(post.title)}</h2>
             <button className="single-right-btn">Read More</button>
           </div>
+          })
+          }
         </div>
     </>
   )

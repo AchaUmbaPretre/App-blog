@@ -23,21 +23,26 @@ const Home = () =>{
     fetchData();
   },[categorie])
 
+  const getText = (html)=> {
+    const doc = new DOMParser().parseFromString(html, 'text/html')
+    return doc.body.textContent
+  }
+
   return (
     <>
         <div className="home">
           <div className="home-container">
-            { posts.map((post)=>{
+            { posts.map((post) => {
 
-    return <div className="home-row" >
+    return  <div className="home-row" >
               <div className="home-image">
-                <img src={image3} alt="" className="home-img" />
+                <img src={`../upload/${post.img}`} alt="" className="home-img" />
               </div>
               <div className="home-row-text">
                 <Link to={`/post/${post.id}`}>
                   <h1 className="home-h1">{post.title}</h1>
                 </Link>
-                <p className="home-desc">{post.desc}</p>
+                <p className="home-desc">{getText(post.desc)}</p>
                 <button className="home-btn">Read More</button>
               </div>
             </div>

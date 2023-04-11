@@ -6,6 +6,7 @@ import axios from 'axios'
 import { AuthContext } from '../../context/authContext'
 import Menu from '../../components/menu/Menu'
 import image3 from '../../assets/image3.jpg'
+import DOMPurify from "dompurify";
 
 const Single = () => {
 
@@ -66,7 +67,9 @@ const Single = () => {
           </div>
           <div className="single-row-text">
             <h1 className="single-h1">{post.title}</h1>
-            <p className="single-desc">{post.description}</p>
+            <p className="single-desc" dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post.description),
+          }}></p>
           </div>
         </div>
 

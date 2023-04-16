@@ -40,7 +40,6 @@ const Write = () => {
         catch(error){
           console.log(error)
         }
-
   }
 
   return (

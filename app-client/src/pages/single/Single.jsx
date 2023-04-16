@@ -72,8 +72,8 @@ const Single = () => {
           }}></p>
           </div>
         </div>
-
-        <Menu categorie={post.categorie}/>
+          {console.log(post.categorie)}
+          <Menu categorie={post.categorie}/>
       </div>
     </>
   )

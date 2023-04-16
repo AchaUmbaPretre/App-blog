@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './home.css'
 import {Link,useLocation} from 'react-router-dom'
-import image3 from '../../assets/image3.jpg'
 import axios from 'axios'
 
 const Home = () =>{
@@ -27,14 +26,14 @@ const Home = () =>{
     const doc = new DOMParser().parseFromString(html, 'text/html')
     return doc.body.textContent
   }
-
+ 
   return (
     <>
         <div className="home">
           <div className="home-container">
             { posts.map((post) => {
 
-    return  <div className="home-row" >
+  return   <div className="home-row" >
               <div className="home-image">
                 <img src={`../upload/${post.img}`} alt="" className="home-img" />
               </div>

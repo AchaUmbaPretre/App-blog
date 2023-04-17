@@ -43,7 +43,7 @@ export const login = (req, res)=>{
         const {password, ...other} = data[0];
 
         
-        res
+return  res
         .cookie("access_token", token ,{
             httpOnly: true,
         })

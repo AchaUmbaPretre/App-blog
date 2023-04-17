@@ -46,7 +46,7 @@ const Write = () => {
         }
 
   }
-console.log(state)
+  
   return (
     <>
       <div className="write">

@@ -29,8 +29,8 @@ const Menu = ({categorie}) =>{
   return (
     <>
         <div className="single-right">
-       { posts?.map((post)=>(
-        <div className="single-row-right2">
+       { posts.map((post)=>(
+        <div className="single-row-right2" key={post.id}>
             <img src={`../upload/${post?.img}`} alt="" className="single-right-img" />
             <h2 className="single-right-h2">{getText(post?.title)}</h2>
             <button className="single-right-btn">Read More</button>

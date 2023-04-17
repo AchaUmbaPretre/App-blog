@@ -26,7 +26,27 @@ export const getPost = (req, res)=>{
     })
 }
 export const addPosts = (req, res)=>{
+    const token = req.cookies.access_token;
+    if(!token) return res.status(401).json("Pas d'authentification");
+
+    jwt.verify(token,process.env.JWT, (error, userInfo)=>{
+        if(error) return res.status(403).json('Token non validé')
     
+        const q = 'INSERT FROM posts(`title`,`desc`,`img`,`categorie`,`date`,`uid`) VALUES(?)'
+
+        const values = [
+            req.body.title,
+            req.body.desc,
+            req.body.img,
+            req.body.categorie,
+            req.body.date,
+            userInfo.id
+        ]
+        db.query(q, [values], (error,data)=>{
+            if(error) res.status(500).json(error)
+            return res.json('processus reussie');
+        })
+    })
 }
 export const deletePost = (req, res)=>{
     const token = req.cookies.access_token;
@@ -46,5 +66,24 @@ export const deletePost = (req, res)=>{
 }
 
 export const udpdatePost = (req, res)=>{
-    
+    const token = req.cookies.access_token;
+    if(!token) return res.status(401).json("Pas d'authentification");
+
+    jwt.verify(token,process.env.JWT, (error, userInfo)=>{
+        if(error) return res.status(403).json('Token non validé')
+        const postId = req.params.id;
+        const q = 'UPDATE posts SET `title`=?, `desc`=?, `img`=?, `categorie`=? WHERE `id` = ? AND `uid` = ?';
+
+        const values = [
+            req.body.title,
+            req.body.desc,
+            req.body.img,
+            req.body.categorie
+        ];
+
+        db.query(q, [...values, postId, userInfo.id], (error,data)=>{
+            if(error) return res.status(500).json(error);
+            return res.json('Modification reussie');
+        })
+    });
 }

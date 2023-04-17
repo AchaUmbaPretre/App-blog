@@ -35,17 +35,18 @@ const Write = () => {
         try{
           state ? await axios.put(`http://localhost:8080/api/posts/${state.id}`,{
             title, desc: value, categorie, img:file ? imgUrl : ""
-          }) : await axios.post(`http://localhost:8080/api/posts/`, {
+          }) : await axios.post(`http://localhost:8080/api/posts/`,{
             title, desc:value, categorie, img:file ? imgUrl : "", date: moment(Date.now()).format('YYY-MM-DD HH:mm:ss'),
           });
           navigate("/")
+          console.log('erreur')
         }
         catch(error){
           console.log(error)
         }
 
   }
-
+console.log(state)
   return (
     <>
       <div className="write">

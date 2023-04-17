@@ -33,7 +33,7 @@ const Home = () =>{
           <div className="home-container">
             { posts.map((post) => {
 
-  return   <div className="home-row" >
+  return   <div className="home-row" key={post.id}>
               <div className="home-image">
                 <img src={`../upload/${post.img}`} alt="" className="home-img" />
               </div>

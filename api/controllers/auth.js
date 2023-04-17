@@ -11,11 +11,11 @@ export const register = (req, res)=>{
         if(error) return res.json(error);
         if(data.length) return res.status(409).json("L'utilisateur existe deja");
 
-        //hash password
+       
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password,salt);
 
-        //INSERT utilisateur
+       
         const q = 'INSERT INTO users(`username`,`email`,`password`) VALUES (?)'
         const values = [req.body.username, req.body.email, hash];
 
@@ -34,7 +34,7 @@ export const login = (req, res)=>{
         if(error) return res.json(error);
         if(data.length === 0) return res.status(404).json("Utilisateur n'existe pas");
 
-        //CHECK MOT DE PASSE
+        
         const passwordCorrect = bcrypt.compareSync(req.body.password, data[0].password);
 
         if (!passwordCorrect) return res.status(400).json("le mot de passe ou password est incorrect");
@@ -42,7 +42,7 @@ export const login = (req, res)=>{
         const token = jwt.sign({ id: data[0].id }, process.env.JWT);
         const {password, ...other} = data[0];
 
-        //cookie
+        
         res
         .cookie("access_token", token ,{
             httpOnly: true,

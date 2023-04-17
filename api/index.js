@@ -8,7 +8,6 @@ import multer from 'multer'
 
 const app = express();
 
-//middlewaller
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())

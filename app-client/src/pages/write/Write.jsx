@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import './write.css'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import axios from 'axios'
-import { useLocation } from 'react-router-dom'
-import moment from 'moment'
+import './write.css';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from "react-router-dom";
+import moment from 'moment';
 
 const Write = () => {
 
-  const state = useLocation().state
-  const [title, setTitle] = useState(state?.title || '')
-  const [value, setValue] = useState(state?.desc || '')
-  const [file, setFile] = useState(null)
-  const [categorie, setCategorie] = useState(state?.categorie || '')
+  const state = useLocation().state;
+  const [title, setTitle] = useState(state?.title || '');
+  const [value, setValue] = useState(state?.desc || '');
+  const [file, setFile] = useState(null);
+  const [categorie, setCategorie] = useState(state?.categorie || '');
+
+  const navigate = useNavigate()
 
   const upload = async ()=>{
     try{
@@ -27,19 +29,21 @@ const Write = () => {
   }
 
   const handleClick = async (e) =>{
-        e.preventDefault()
-        const imgUrl = await upload()
+        e.preventDefault();
+        const imgUrl = await upload();
 
         try{
           state ? await axios.put(`http://localhost:8080/api/posts/${state.id}`,{
             title, desc: value, categorie, img:file ? imgUrl : ""
           }) : await axios.post(`http://localhost:8080/api/posts/`, {
-            title, desc:value, categorie, img:file ? imgUrl : "", date: moment(Date.now()).format('YYY-MM-DD')
-          })
+            title, desc:value, categorie, img:file ? imgUrl : "", date: moment(Date.now()).format('YYY-MM-DD HH:mm:ss'),
+          });
+          navigate("/")
         }
         catch(error){
           console.log(error)
         }
+
   }
 
   return (
